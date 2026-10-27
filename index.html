@@ -10,6 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="manifest" href="https://augustineiacopelli.github.io/appaday/manifests/005.webmanifest">
 <script src="https://augustineiacopelli.github.io/appaday/save.js" defer></script>
+<script src="https://augustineiacopelli.github.io/appaday/models.js"></script>
 <script src="https://augustineiacopelli.github.io/appaday/keys.js" data-app="005" data-legacy-key="dadJokeApiKey" data-accent="#A63D9E" defer></script>
 <title>Dad Joke Generator | AppADay 005</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -439,7 +440,7 @@ async function getJoke() {
         'anthropic-dangerous-direct-browser-access': 'true'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-5-5',
+        model: (window.AppModels ? window.AppModels.id('sonnet') : ''),
         max_tokens: 1000,
         messages: [{ role: 'user', content: promptText }]
       })
@@ -489,15 +490,6 @@ function revealPunchline() {
   document.getElementById('revealBtn').style.display = 'none';
 }
 
-async function getModel(tier = 'sonnet') {
-  try {
-    const response = await fetch('../config.json');
-    const config = await response.json();
-    return config.models[tier];
-  } catch {
-    return 'claude-sonnet-5-5';
-  }
-}
 </script>
 
 </body>

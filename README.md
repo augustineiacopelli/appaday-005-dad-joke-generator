@@ -11,7 +11,7 @@ Click the button. Claude generates a brand-new dad joke. The setup appears first
 ## Stack
 
 - HTML / CSS / Vanilla JS
-- Claude API (`claude-sonnet-4-20250514`) for joke generation
+- Claude API (the current Claude Sonnet model) for joke generation
 - Structured JSON response parsing
 
 ## Definition of Complete checklist
